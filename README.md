@@ -1,7 +1,7 @@
 # VitaMind
 Solution for Google Solution Challenge 2023
 
-This project is created for Google Solution Challenge 2023 under the "Good Health" United Nation Sustainable Development Goal.
+This project is created for Google Solution Challenge 2023 under the "Good Health and Well Being" United Nation Sustainable Development Goal.
 
 # How to access this?
 
