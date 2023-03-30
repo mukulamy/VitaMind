@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BMI Calculator</title>
+  <link rel='stylesheet' href="style.css">
+  <link rel="icon" href="Logo.png">
+
+  <style>
+    @media only screen and (max-width: 1300px) {
+
+      #form-container>img,
+      #form-container>form {
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #form-container>img {
+        width: 60%;
+      }
+
+      #form-container>form {
+        width: 80% !important;
+        height: 60%;
+      }
+
+      label,
+      button {
+        font-size: 40px;
+      }
+
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <img src="https://i.pinimg.com/originals/38/09/1c/38091ce793a5e891f00aa49b6f0898d2.gif" alt="Computer man"
+      style="width:48px;height:48px; float: left; display: inline-block; margin-bottom: 0; margin-left: 40px;">
+    <img src="https://i.pinimg.com/originals/38/09/1c/38091ce793a5e891f00aa49b6f0898d2.gif" alt="Computer man"
+      style="width:48px;height:48px; float: right; display: inline-block; margin-bottom: 0; margin-right: 40px;">
+    <a href="index.html">
+      <h1>VitaMind</h1>
+    </a>
+    <p>Your Health is our concern</p>
+
+  </header>
+  <div class="cursor-follower">
+
+  </div>
+  <div id="form-container">
+    <img src="https://api.parashospitals.com/uploads/2017/10/BMI.png" alt="BMI Scale">
+    <form style="width:34%;" class="form">
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" name="weight" required>
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" name="height" required>
+      <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+
+    </form>
+  </div>
+  <div id="result-container">
+    <h2 id="result"></h2>
+    <img id="result-img" src="#" alt="BMI Scale">
+    <button type="button" onclick="resetForm()">Reset</button>
+  </div>
+
+  <footer>
+    <div id="social-platforms">
+      <h3>Connect with me</h3>
+
+      <a class="btn btn-icon btn-site" href="https://mukulamy.github.io/timeline/" target="_blank"><i
+          class="fa fa-facebook"></i><span style="
+    background-color: red;
+">Personal Site</span></a>
+      <a class="btn btn-icon btn-twitter" href="https://twitter.com/whitehatmukul" target="_blank"><i
+          class="fa fa-twitter"></i><span>Twitter</span></a>
+      <a class="btn btn-icon btn-instagram" href="https://www.instagram.com/self_gf/" target="_blank"><i
+          class="fa fa-instagram"></i><span>instagram</span></a>
+      <a class="btn btn-icon btn-github" href="https://github.com/mukulamy" target="_blank"><i
+          class="fa fa-github"></i><span style="
+    background-color:  black;
+">GitHub</span></a>
+      <a class="btn btn-icon btn-linkedin" href="https://www.linkedin.com/in/mukulji/" target="_blank"><i
+          class="fa fa-linkedin"></i><span>LinkedIn</span></a>
+    </div>
+    <p id="creator">Created with ❤️ by <a href="https://mukulamy.github.io/timeline/" target="_blank">Mukul</a></p>
+  </footer>
+  <script>
+    function calculateBMI() {
+      document.getElementById('result-container').style.visibility = 'visible';
+
+      var weight = document.getElementById("weight").value;
+      var height = document.getElementById("height").value;
+      var bmi = weight / ((height / 100) ** 2);
+      var result = document.getElementById("result");
+      var resultImg = document.getElementById("result-img");
+      var formContainer = document.getElementById("form-container");
+      if (bmi < 18.5) {
+        result.innerText = "Your BMI is " + bmi.toFixed(1) + " - Underweight";
+        resultImg.src = "https://png.pngtree.com/png-clipart/20210912/original/pngtree-thin-character-thin-man-hungry-png-image_6758380.png";
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        result.innerText = "Your BMI is " + bmi.toFixed(1) + " - Normal weight";
+        resultImg.src = "https://clincalc.com/images/amputation/body_outline.png";
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        result.innerText = "Your BMI is " + bmi.toFixed(1) + " - Overweight";
+        resultImg.src = "https://markewbie.weebly.com/uploads/4/0/3/9/40396485/fat-mirror-web_2_orig.png";
+      } else {
+        result.innerText = "Your BMI is " + bmi.toFixed(1) + " - Obese";
+        resultImg.src = "https://www.clipartmax.com/png/middle/194-1945608_having-drawing-of-a-fat-man.png";
+      }
+      formContainer.classList.add("hide");
+    } function resetForm() {
+      var result = document.getElementById("result");
+      var resultImg = document.getElementById("result-img");
+      var formContainer = document.getElementById("form-container");
+      var weightInput = document.getElementById("weight");
+      var heightInput = document.getElementById("height");
+      result.innerText = "";
+      resultImg.src = "#";
+      formContainer.classList.remove("hide");
+      weightInput.value = "";
+      heightInput.value = "";
+      document.getElementById('result-container').style.visibility = 'hidden';
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

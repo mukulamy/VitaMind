@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Talk to Yourself</title>
+  <link rel='stylesheet' href="style.css">
+  <link rel="icon" href="Logo.png">
+
+  <style>
+    #creator {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding: 10px;
+      background-color: black;
+    }
+
+    *,
+    a {
+      color: white;
+      background-color: black;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body style="background-color: black;">
+  <div id="hide">
+    <p id="countdown"></p>
+    <br><br>
+    <h1>Give Yourself Some Time</h1>
+    <br>
+    <h3>You should stay here on this site, and try to talk with yourself as No other person can actually feel what
+      you're going through</h3>
+    <br>
+    <h4>Let's not be mean to have someone for our Happiness, Let's create our own</h4>
+    <br>
+    <h5>We Love You</h5>
+  </div>
+
+  <p id="creator">Created with ❤️ by <a href="https://mukulamy.github.io/timeline/" target="_blank">Mukul</a></p>
+
+
+  <script>
+    let a = setInterval(hide, 20000);
+    function hide() {
+      document.getElementById("hide").style.display = 'none';
+    }
+
+    const countdownElement = document.getElementById("countdown");
+
+
+    const countdownDate = new Date(Date.now() + 20 * 1000);
+
+
+    const countdownTimer = setInterval(() => {
+
+      const now = new Date().getTime();
+
+
+      const timeRemaining = countdownDate - now;
+
+
+      if (timeRemaining <= 0) {
+        clearInterval(countdownTimer);
+        countdownElement.innerText = "Countdown Over";
+        return;
+      }
+
+
+      const seconds = Math.floor(timeRemaining / 1000);
+
+
+      countdownElement.innerText = `Below Content Will Be Hidden in ${seconds}`;
+    }, 1000);
+
+  </script>
+</body>
+
+</html>

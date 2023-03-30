@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Stress Test</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Logo.png">
+  <script src="script.js"></script>
+
+
+</head>
+
+<body>
+  <header>
+    <img src="https://i.pinimg.com/originals/38/09/1c/38091ce793a5e891f00aa49b6f0898d2.gif" alt="Computer man"
+      style="width:48px;height:48px; float: left; display: inline-block; margin-bottom: 0; margin-left: 40px;">
+    <img src="https://i.pinimg.com/originals/38/09/1c/38091ce793a5e891f00aa49b6f0898d2.gif" alt="Computer man"
+      style="width:48px;height:48px; float: right; display: inline-block; margin-bottom: 0; margin-right: 40px;">
+    <a href="index.html">
+      <h1>VitaMind</h1>
+    </a>
+    <p>Your Health is our concern</p>
+
+  </header>
+  <div class="container">
+
+    <form id="questions-form">
+      <div class="question">
+        <p>Question 1: Do you often feel overwhelmed?</p>
+        <label><input type="radio" name="question1" value="yes"> Yes</label>
+        <label><input type="radio" name="question1" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 2: Do you have trouble sleeping?</p>
+        <label><input type="radio" name="question2" value="yes"> Yes</label>
+        <label><input type="radio" name="question2" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 3: Do you feel irritable or easily frustrated?</p>
+        <label><input type="radio" name="question3" value="yes"> Yes</label>
+        <label><input type="radio" name="question3" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 4: Do you often have headaches or muscle tension?</p>
+        <label><input type="radio" name="question4" value="yes"> Yes</label>
+        <label><input type="radio" name="question4" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 5: Do you have difficulty concentrating or remembering things?</p>
+        <label><input type="radio" name="question5" value="yes"> Yes</label>
+        <label><input type="radio" name="question5" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 6: Do you feel anxious or nervous?</p>
+        <label><input type="radio" name="question6" value="yes"> Yes</label>
+        <label><input type="radio" name="question6" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 7: Do you have changes in appetite or weight?</p>
+        <label><input type="radio" name="question7" value="yes"> Yes</label>
+        <label><input type="radio" name="question7" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 8: Do you feel tired or fatigued?</p>
+        <label><input type="radio" name="question8" value="yes"> Yes</label>
+        <label><input type="radio" name="question8" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 9: Do you feel sad or depressed?</p>
+        <label><input type="radio" name="question9" value="yes"> Yes</label>
+        <label><input type="radio" name="question9" value="no"> No</label>
+      </div>
+      <div class="question">
+        <p>Question 10: Do you have difficulty relaxing or unwinding?</p>
+        <label><input type="radio" name="question10" value="yes"> Yes</label>
+        <label><input type="radio" name="question10" value="no"> No</label>
+      </div>
+      <button class="submit-btn" type="submit">Submit</button>
+
+    </form>
+    <div id="result"></div>
+    <div id="result"></div>
+    <button id="recalculate-btn" style="display:none;">Recalculate</button>
+
+  </div>
+
+  <footer>
+    <div id="social-platforms">
+      <h3>Connect with me</h3>
+
+      <a class="btn btn-icon btn-site" href="https://mukulamy.github.io/timeline/" target="_blank"><i
+          class="fa fa-facebook"></i><span style="
+    background-color: red;
+">Personal Site</span></a>
+      <a class="btn btn-icon btn-twitter" href="https://twitter.com/whitehatmukul" target="_blank"><i
+          class="fa fa-twitter"></i><span>Twitter</span></a>
+      <a class="btn btn-icon btn-instagram" href="https://www.instagram.com/self_gf/" target="_blank"><i
+          class="fa fa-instagram"></i><span>instagram</span></a>
+      <a class="btn btn-icon btn-github" href="https://github.com/mukulamy" target="_blank"><i
+          class="fa fa-github"></i><span style="
+    background-color:  black;
+">GitHub</span></a>
+      <a class="btn btn-icon btn-linkedin" href="https://www.linkedin.com/in/mukulji/" target="_blank"><i
+          class="fa fa-linkedin"></i><span>LinkedIn</span></a>
+    </div>
+    <p id="creator">Created with ❤️ by <a href="https://mukulamy.github.io/timeline/" target="_blank">Mukul</a></p>
+  </footer>
+  <script>
+    const questionsForm = document.getElementById('questions-form');
+    const resultDiv = document.getElementById('result');
+    const recalculateBtn = document.getElementById('recalculate-btn');
+
+    questionsForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      // Get the answers to the questions
+      const answers = {
+        question1: document.querySelector('input[name="question1"]:checked').value,
+        question2: document.querySelector('input[name="question2"]:checked').value,
+        question3: document.querySelector('input[name="question3"]:checked').value,
+        question4: document.querySelector('input[name="question4"]:checked').value,
+        question5: document.querySelector('input[name="question5"]:checked').value,
+        question6: document.querySelector('input[name="question6"]:checked').value,
+        question7: document.querySelector('input[name="question7"]:checked').value,
+        question8: document.querySelector('input[name="question8"]:checked').value,
+        question9: document.querySelector('input[name="question9"]:checked').value,
+        question10: document.querySelector('input[name="question10"]:checked').value
+      };
+
+      // Calculate the score
+      let score = 0;
+      for (const answer in answers) {
+        if (answers[answer] === 'yes') {
+          score++;
+        }
+      }
+
+      // Determine the result based on the score
+      let result = '';
+      if (score <= 3) {
+        result = 'You do not seem to have much stress at the moment.';
+      } else if (score <= 7) {
+        result = 'You may be experiencing some stress. Consider taking some time to relax and take care of yourself.';
+      } else {
+        result = 'You appear to be experiencing a lot of stress. It may be helpful to talk to someone about how you are feeling.';
+      }
+
+      // Display the result
+      resultDiv.innerText = result;
+
+      // Hide the form and show the recalculate button
+      questionsForm.style.display = 'none';
+      recalculateBtn.style.display = 'block';
+    });
+
+    recalculateBtn.addEventListener('click', () => {
+      // Show the form and hide the recalculate button
+      questionsForm.style.display = 'block';
+      recalculateBtn.style.display = 'none';
+      form.reset();
+    });
+
+  </script>
+</body>
+
+</html>

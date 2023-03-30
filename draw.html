@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Scribble Page</title>
+  <link rel='stylesheet' href="style.css">
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    button {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      padding: 10px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="scribble-canvas"></canvas>
+  <button id="reset-button">Reset</button>
+
+  <script>
+    const canvas = document.getElementById('scribble-canvas');
+    const context = canvas.getContext('2d');
+    const resetButton = document.getElementById('reset-button');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hue = 0;
+    let direction = true;
+
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
+    context.lineWidth = 2;
+
+    function draw(e) {
+      if (!isDrawing) return;
+      context.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+      context.beginPath();
+      context.moveTo(lastX, lastY);
+      context.lineTo(e.offsetX, e.offsetY);
+      context.stroke();
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+      hue = (hue + 1) % 360;
+      if (context.lineWidth >= 30 || context.lineWidth <= 1) {
+        direction = !direction;
+      }
+      if (direction) {
+        context.lineWidth += 1;
+      } else {
+        context.lineWidth -= 1;
+      }
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+
+    canvas.addEventListener('mousemove', draw);
+
+    canvas.addEventListener('mouseup', () => {
+      isDrawing = false;
+    });
+
+    canvas.addEventListener('mouseout', () => {
+      isDrawing = false;
+    });
+
+    resetButton.addEventListener('click', () => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+
+  </script>
+</body>
+
+</html>
