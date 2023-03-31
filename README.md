@@ -5,7 +5,7 @@ This project is created for Google Solution Challenge 2023 under the "Good Healt
 
 # How to access this?
 
-Access this project here : 
+Access this project here : https://vitamind.dev/
 
 OR
 
